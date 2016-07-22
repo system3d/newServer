@@ -1,29 +1,39 @@
 {
-  "name": "LaraNode",
-  "version": "1.0.0",
-  "description": "",
-  "main": "build.js",
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
-  "scripts": {
-    "prebuild-server": "rmdir build && mkdir build",
-    "build-server": "babel -d ./build ./src -s",
-    "start": "node ./build/index",
-    "prestart": "npm run build-server",
-    "dev": "babel-node ./src/index"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-preset-es2015": "^6.9.0",
-    "express": "^4.14.0",
-    "helmet": "^2.1.1",
-    "ioredis-eventemitter": "^1.0.1",
-    "socket.io": "^1.4.8"
-  }
+    "name": "LaraNode",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build.js",
+    "babel": {
+        "presets": [
+            "es2015"
+        ]
+    },
+    "scripts": {
+        "prebuild-server": "rmdir build && mkdir build",
+        "build-server": "babel -d ./build ./src -s",
+        "start": "node ./build/index",
+        "prestart": "npm run build-server",
+        "dev": "babel-node ./src/index",
+        "commit": "git add --all && git commit -m:poop:auto-commit && git push origin master",
+        "lint": "node_modules/.bin/esw src/**/*.js",
+        "lint:watch": "npm run lint -- --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.14.0",
+        "helmet": "^2.1.1",
+        "ioredis-eventemitter": "^1.0.1",
+        "socket.io": "^1.4.8"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.11.4",
+        "babel-preset-es2015": "^6.9.0",
+        "chai": "^3.5.0",
+        "eslint": "^3.1.1",
+        "eslint-plugin-import": "^1.11.1",
+        "eslint-watch": "^2.1.13",
+        "mocha": "^2.5.3"
+    }
 }

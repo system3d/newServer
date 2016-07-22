@@ -1,11 +1,13 @@
 import env from './env'
 import Redis from 'ioredis-eventemitter'
 import helmet from 'helmet'
+import express from 'express'
 
-let app = require('express')()
+let app = express()
 let http = require('http').Server(app)
 
 app.use(helmet())
+app.use(express.static(__dirname + '/public'));
 
 let redis = new Redis({
 	port: env.redis.port,
@@ -23,7 +25,7 @@ setTimeout(()=>{
 },2000)
 
 app.get('/', function (req, res) {
-	res.send('<h1>Hello world</h1>')
+	res.sendFile(__dirname + '/index.html')
 })
 
 http.listen(env.port, function () {
