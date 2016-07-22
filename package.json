@@ -1,0 +1,29 @@
+{
+  "name": "LaraNode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "scripts": {
+    "prebuild-server": "rmdir build && mkdir build",
+    "build-server": "babel -d ./build ./src -s",
+    "start": "node ./build/index",
+    "prestart": "npm run build-server",
+    "dev": "babel-node ./src/index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "express": "^4.14.0",
+    "helmet": "^2.1.1",
+    "ioredis-eventemitter": "^1.0.1",
+    "socket.io": "^1.4.8"
+  }
+}
