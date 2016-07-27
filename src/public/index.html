@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Servidor dos Brother</title>
+    <title>FUS-RO-DAH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(229, 236, 237);
+            color: rgb(60, 60, 60);
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 15px;
+            color: rgb(175, 37, 57);
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            margin-bottom: 35px;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages h4 {
+            margin-bottom: 4px;
+            color: rgb(200, 55, 23);
+        }
+    </style>
 </head>
-<body style='background:rgb(96, 4, 119);text-align:center'>
-  <h1 style='font-size:70px;color:white'>Servindo na Boa</h1>
+
+<body>
+    <h1>Sayings from Oversea</h1>
+    <ul id="messages"></ul>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('new message', function(msg){
+            theParent = document.getElementById("messages");
+            theKid = document.createElement("li");
+            theKid.innerHTML = '<h4>'+msg.data.author+' Says:</h4> <p>'+msg.data.message+'</p>';
+
+            // append theKid to the end of theParent
+            theParent.appendChild(theKid);
+
+            // prepend theKid to the beginning of theParent
+            theParent.insertBefore(theKid, theParent.firstChild);
+          });
+    </script>
 </body>
+
 </html>
