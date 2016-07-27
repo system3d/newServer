@@ -35,7 +35,7 @@ let red = new Redis_true({
 //   })
 // })
 
-redis.on('*', (channel, msg) => {
+redis.on('tipologia:*', (channel, msg) => {
 	if(channel === 'message:new'){
 		messages.push(msg.data)
 		red.set('messages', JSON.stringify(messages))
